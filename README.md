@@ -1,6 +1,6 @@
-# materialStore README
+# n README
 
-This is the README for your extension "materialStore". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "n". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 
