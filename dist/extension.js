@@ -18,8 +18,8 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.deactivate = exports.activate = void 0;
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-const { name, version } = __webpack_require__(2);
-const vscode = __webpack_require__(1);
+const { name, version } = __webpack_require__(1);
+const vscode = __webpack_require__(2);
 const i18n_1 = __webpack_require__(3);
 const getHtmlForWebview_1 = __webpack_require__(5);
 // import createExtensionsStatusBar from './statusBar/createExtensionsStatusBar';
@@ -62,7 +62,7 @@ function activate(context) {
                     retainContextWhenHidden: true,
                     enableFindWidget: true,
                 });
-                materialImporterWebviewPanel.webview.html = getHtmlForWebview_1.getHtmlForWebview(extensionPath, 'http://www.baidu.com', true, ' ');
+                materialImporterWebviewPanel.webview.html = getHtmlForWebview_1.getHtmlForWebview(extensionPath, 'vendor');
                 // materialImporterWebviewPanel.webview.html = getPreviewHtml();
                 // let { html } = await getHTML('http://www.baidu.com');
                 // materialImporterWebviewPanel.webview.html = html;
@@ -111,13 +111,13 @@ exports.deactivate = deactivate;
 /* 1 */
 /***/ ((module) => {
 
-module.exports = require("vscode");;
+module.exports = JSON.parse('{"name":"n","private":true,"displayName":"n","description":"","version":"0.0.1","engines":{"vscode":"^1.55.0"},"categories":["Other"],"activationEvents":["onCommand:n.helloWorld","onCommand:n.start"],"main":"./dist/extension.js","contributes":{"commands":[{"command":"n.helloWorld","title":"Hello World1111111111111111"},{"command":"n.start","title":"ssssssssss"}]},"scripts":{"vscode:prepublish":"yarn run package","compile":"webpack","watch":"webpack --watch","package":"webpack --mode production --devtool hidden-source-map","test-compile":"tsc -p ./","test-watch":"tsc -watch -p ./","pretest":"yarn run test-compile && yarn run lint","lint":"eslint src --ext ts","test":"node ./out/test/runTest.js"},"devDependencies":{"@types/glob":"^7.1.3","@types/mocha":"^8.0.4","@types/node":"^12.11.7","@types/vscode":"^1.55.0","@typescript-eslint/eslint-plugin":"^4.14.1","@typescript-eslint/parser":"^4.14.1","eslint":"^7.19.0","glob":"^7.1.6","lerna":"^4.0.0","mocha":"^8.2.1","ts-loader":"^8.0.14","typescript":"^4.1.3","vscode-test":"^1.5.0","webpack":"^5.19.0","webpack-cli":"^4.4.0"},"viewsContainers":{"activitybar":[{"id":"mertial","title":"iiiiii","icon":"images/icon.svg"}]},"workspaces":["packages/*"]}');
 
 /***/ }),
 /* 2 */
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"name":"n","displayName":"n","description":"","version":"0.0.1","engines":{"vscode":"^1.55.0"},"categories":["Other"],"activationEvents":["onCommand:n.helloWorld","onCommand:n.start"],"main":"./dist/extension.js","contributes":{"commands":[{"command":"n.helloWorld","title":"Hello World1111111111111111"},{"command":"n.start","title":"ssssssssss"}]},"scripts":{"vscode:prepublish":"yarn run package","compile":"webpack","watch":"webpack --watch","package":"webpack --mode production --devtool hidden-source-map","test-compile":"tsc -p ./","test-watch":"tsc -watch -p ./","pretest":"yarn run test-compile && yarn run lint","lint":"eslint src --ext ts","test":"node ./out/test/runTest.js"},"devDependencies":{"@types/glob":"^7.1.3","@types/mocha":"^8.0.4","@types/node":"^12.11.7","@types/vscode":"^1.55.0","@typescript-eslint/eslint-plugin":"^4.14.1","@typescript-eslint/parser":"^4.14.1","eslint":"^7.19.0","glob":"^7.1.6","mocha":"^8.2.1","ts-loader":"^8.0.14","typescript":"^4.1.3","vscode-test":"^1.5.0","webpack":"^5.19.0","webpack-cli":"^4.4.0"},"viewsContainers":{"activitybar":[{"id":"mertial","title":"iiiiii","icon":"images/icon.svg"}]}}');
+module.exports = require("vscode");;
 
 /***/ }),
 /* 3 */
@@ -150,7 +150,7 @@ module.exports = JSON.parse('{"extension.helper.materailImporter.title":"导入�
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getHtmlForWebview = void 0;
 const DEFAULT_ENTRY = 'index';
-const vscode = __webpack_require__(1);
+const vscode = __webpack_require__(2);
 const path = __webpack_require__(6);
 function originResourceProcess(url) {
     return vscode.Uri.file(url).with({ scheme: 'vscode-resource' });
@@ -187,11 +187,6 @@ function getHtmlForWebview(extensionPath, entryName, needVendor, cdnBasePath, ex
       <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
       <meta name="theme-color" content="#FFFFFF">
       <title>meterial</title>
-      <style>
-        #app{
-            font-size: 20px;
-        }
-      </style>
       <link rel="stylesheet" type="text/css" href="${styleUri}">
       ${extraHtml || ''}
       ` +
@@ -199,13 +194,13 @@ function getHtmlForWebview(extensionPath, entryName, needVendor, cdnBasePath, ex
         `
     </head>
     <body>
-      <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg4q.duitang.com%2Fuploads%2Fitem%2F201507%2F06%2F20150706140024_kRCzw.jpeg&refer=http%3A%2F%2Fimg4q.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620995196&t=031788f62cb0573ec4018d7e71148614"/>
       <noscript>You need to enable JavaScript to run this app.</noscript>
-      <div id="app">111111111</div>
+      <h1>counter</h1>
+      <div id="app">0</div>
       ` +
         (needVendor ? `<script src="${vendorScriptUri}"></script>` : '') +
         `<script src="${scriptUri}"></script>
-    <button onclick="btnClick()">btn</button>
+    <button class="btn" onclick="btnClick()">btn</button>
     </body>
   </html>`;
     return fileContent;

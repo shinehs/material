@@ -1,0 +1,16 @@
+{
+  "name": "ui",
+  "version": "0.1.0",
+  "description": "Iceworks common service for VSCode extension.",
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "publishConfig": {}
+}

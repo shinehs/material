@@ -59,7 +59,7 @@ export function activate(context: vscode.ExtensionContext) {
                 },
             );
             
-            materialImporterWebviewPanel.webview.html = getHtmlForWebview(extensionPath,'http://www.baidu.com', true, ' ');
+            materialImporterWebviewPanel.webview.html = getHtmlForWebview(extensionPath,'vendor');
 
             // materialImporterWebviewPanel.webview.html = getPreviewHtml();
             // let { html } = await getHTML('http://www.baidu.com');

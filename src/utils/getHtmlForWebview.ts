@@ -49,11 +49,6 @@ export function getHtmlForWebview(
       <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
       <meta name="theme-color" content="#FFFFFF">
       <title>meterial</title>
-      <style>
-        #app{
-            font-size: 20px;
-        }
-      </style>
       <link rel="stylesheet" type="text/css" href="${styleUri}">
       ${extraHtml || ''}
       ` +
@@ -61,13 +56,13 @@ export function getHtmlForWebview(
     `
     </head>
     <body>
-      <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg4q.duitang.com%2Fuploads%2Fitem%2F201507%2F06%2F20150706140024_kRCzw.jpeg&refer=http%3A%2F%2Fimg4q.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620995196&t=031788f62cb0573ec4018d7e71148614"/>
       <noscript>You need to enable JavaScript to run this app.</noscript>
-      <div id="app">111111111</div>
+      <h1>counter</h1>
+      <div id="app">0</div>
       ` +
     (needVendor ? `<script src="${vendorScriptUri}"></script>` : '') +
     `<script src="${scriptUri}"></script>
-    <button onclick="btnClick()">btn</button>
+    <button class="btn" onclick="btnClick()">btn</button>
     </body>
   </html>`;
   return fileContent;
