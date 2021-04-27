@@ -1,9 +1,15 @@
+import '@babel/polyfill';
+import * as React from 'react';
 import { useState, useEffect } from 'react';
-import * as ReactDom from 'react-dom';
+import * as ReactDOM from 'react-dom';
 
+const App = (
+    <div>
+        123
+    </div>
+);
 
-
-ReactDom.render(
-    <App data={data} />,
+ReactDOM.render(
+    App,
     document.getElementById('app')
 );

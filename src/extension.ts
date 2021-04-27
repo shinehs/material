@@ -5,9 +5,9 @@ import * as vscode from 'vscode';
 import I18n from './i18n';
 import { getHtmlForWebview } from './utils/getHtmlForWebview';
 
-// import createExtensionsStatusBar from './statusBar/createExtensionsStatusBar';
-// import { showExtensionsQuickPickCommandId, projectExistsTime } from './constants';
-// import showAllQuickPick from './quickPicks/showAllQuickPick';
+import createExtensionsStatusBar from './statusBar/createExtensionsStatusBar';
+import { showExtensionsQuickPickCommandId, projectExistsTime } from './constants';
+import showAllQuickPick from './quickPicks/showAllQuickPick';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -27,13 +27,13 @@ export function activate(context: vscode.ExtensionContext) {
         panel.webview.html = getPreviewHtml();
     });
     // init statusBarItem TODO 不出来 暂时不知道为什么
-    // const extensionsStatusBar = createExtensionsStatusBar();
-    // subscriptions.push(extensionsStatusBar);
-    // subscriptions.push(
-    //     vscode.commands.registerCommand(showExtensionsQuickPickCommandId, async () => {
-    //         await showAllQuickPick();
-    //     }),
-    // );
+    const extensionsStatusBar = createExtensionsStatusBar();
+    subscriptions.push(extensionsStatusBar);
+    subscriptions.push(
+        vscode.commands.registerCommand(showExtensionsQuickPickCommandId, async () => {
+            await showAllQuickPick();
+        }),
+    );
 
     // set material importer
     let materialImporterWebviewPanel: vscode.WebviewPanel | undefined;

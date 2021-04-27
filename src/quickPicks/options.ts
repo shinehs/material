@@ -10,9 +10,10 @@ export default [
   {
     label: 'test',
     detail: 'testdetail',
-    command: 'iceworks-project-creator.create-project.start',
-    async condition() {
-      return vscode.extensions.getExtension('iceworks-team.iceworks-project-creator');
-    },
+    command: 'yymaterial-importer.start'
+    // TODO 这个是啥？
+    // async condition() {
+    //   return vscode.extensions.getExtension('iceworks-team.iceworks-project-creator');
+    // },
   }
 ];

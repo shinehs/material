@@ -22,9 +22,9 @@ const { name, version } = __webpack_require__(1);
 const vscode = __webpack_require__(2);
 const i18n_1 = __webpack_require__(3);
 const getHtmlForWebview_1 = __webpack_require__(5);
-// import createExtensionsStatusBar from './statusBar/createExtensionsStatusBar';
-// import { showExtensionsQuickPickCommandId, projectExistsTime } from './constants';
-// import showAllQuickPick from './quickPicks/showAllQuickPick';
+const createExtensionsStatusBar_1 = __webpack_require__(7);
+const constants_1 = __webpack_require__(8);
+const showAllQuickPick_1 = __webpack_require__(9);
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 const { window, ViewColumn } = vscode;
@@ -36,13 +36,11 @@ function activate(context) {
         panel.webview.html = getPreviewHtml();
     });
     // init statusBarItem TODO 不出来 暂时不知道为什么
-    // const extensionsStatusBar = createExtensionsStatusBar();
-    // subscriptions.push(extensionsStatusBar);
-    // subscriptions.push(
-    //     vscode.commands.registerCommand(showExtensionsQuickPickCommandId, async () => {
-    //         await showAllQuickPick();
-    //     }),
-    // );
+    const extensionsStatusBar = createExtensionsStatusBar_1.default();
+    subscriptions.push(extensionsStatusBar);
+    subscriptions.push(vscode.commands.registerCommand(constants_1.showExtensionsQuickPickCommandId, () => __awaiter(this, void 0, void 0, function* () {
+        yield showAllQuickPick_1.default();
+    })));
     // set material importer
     let materialImporterWebviewPanel;
     function activeMaterialImporterWebview() {
@@ -221,6 +219,141 @@ function getNonce() {
 /***/ ((module) => {
 
 module.exports = require("path");;
+
+/***/ }),
+/* 7 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const vscode = __webpack_require__(2);
+const constants_1 = __webpack_require__(8);
+function createExtensionsStatusBar() {
+    const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+    statusBarItem.text = constants_1.materialImporterText.statusBar.text;
+    statusBarItem.command = constants_1.showExtensionsQuickPickCommandId;
+    statusBarItem.show();
+    return statusBarItem;
+}
+exports.default = createExtensionsStatusBar;
+
+
+/***/ }),
+/* 8 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.projectExistsTime = exports.materialImporterText = exports.editorTitleRunBuildCommandId = exports.editorTitleRunDebugCommandId = exports.showExtensionsQuickPickCommandId = exports.nodeDepTypes = void 0;
+exports.nodeDepTypes = ['dependencies', 'devDependencies'];
+exports.showExtensionsQuickPickCommandId = 'yymaterial-importer.showEntriesQuickPick'; // iceworksApp.showEntriesQuickPick 暂时随便写个
+exports.editorTitleRunDebugCommandId = 'npmScripts-editor-title-run-dev';
+exports.editorTitleRunBuildCommandId = 'npmScripts-editor-title-run-build';
+exports.materialImporterText = {
+    statusBar: {
+        text: 'yy-material-importer'
+    }
+};
+exports.projectExistsTime = 5;
+
+
+/***/ }),
+/* 9 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const vscode = __webpack_require__(2);
+const options_1 = __webpack_require__(10);
+const getOptions_1 = __webpack_require__(11);
+const { window, commands } = vscode;
+function showAllQuickPick() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const quickPick = window.createQuickPick();
+        const entryOptions = yield getOptions_1.default(options_1.default);
+        quickPick.items = entryOptions;
+        quickPick.onDidChangeSelection((selection) => {
+            if (selection[0]) {
+                const currentExtension = entryOptions.find((option) => option.label === selection[0].label);
+                if (currentExtension) {
+                    const { command, args } = currentExtension;
+                    commands.executeCommand(command, args);
+                    quickPick.dispose();
+                }
+            }
+        });
+        quickPick.onDidHide(() => quickPick.dispose());
+        quickPick.show();
+    });
+}
+exports.default = showAllQuickPick;
+
+
+/***/ }),
+/* 10 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+// import { getProjectType, checkIsPegasusProject, checkIsTargetProjectType } from '@iceworks/project-service';
+// import { checkIsAliInternal, checkIsInstalledDoctor } from '@iceworks/common-service';
+// import i18n from '../i18n';
+/**
+ * 该数组总是列出所有可用的命令，外部可以基于该数组进行赛选
+ */
+exports.default = [
+    {
+        label: 'test',
+        detail: 'testdetail',
+        command: 'yymaterial-importer.start'
+        // TODO 这个是啥？
+        // async condition() {
+        //   return vscode.extensions.getExtension('iceworks-team.iceworks-project-creator');
+        // },
+    }
+];
+
+
+/***/ }),
+/* 11 */
+/***/ (function(__unused_webpack_module, exports) {
+
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+function default_1(entries) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const conditionResults = yield Promise.all(entries.map(({ condition }) => __awaiter(this, void 0, void 0, function* () {
+            if (condition) {
+                const result = yield condition();
+                return result;
+            }
+            else {
+                return true;
+            }
+        })));
+        return entries.filter((v, index) => conditionResults[index]);
+    });
+}
+exports.default = default_1;
+
 
 /***/ })
 /******/ 	]);
