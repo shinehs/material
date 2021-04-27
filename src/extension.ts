@@ -27,13 +27,13 @@ export function activate(context: vscode.ExtensionContext) {
         panel.webview.html = getPreviewHtml();
     });
     // init statusBarItem TODO 不出来 暂时不知道为什么
-    const extensionsStatusBar = createExtensionsStatusBar();
-    subscriptions.push(extensionsStatusBar);
-    subscriptions.push(
-        vscode.commands.registerCommand(showExtensionsQuickPickCommandId, async () => {
-            await showAllQuickPick();
-        }),
-    );
+    // const extensionsStatusBar = createExtensionsStatusBar();
+    // subscriptions.push(extensionsStatusBar);
+    // subscriptions.push(
+    //     vscode.commands.registerCommand(showExtensionsQuickPickCommandId, async () => {
+    //         await showAllQuickPick();
+    //     }),
+    // );
 
     // set material importer
     let materialImporterWebviewPanel: vscode.WebviewPanel | undefined;
