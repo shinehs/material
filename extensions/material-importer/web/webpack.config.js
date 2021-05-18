@@ -12,7 +12,7 @@ const projectInfo = {
 };
 
 module.exports = {
-    entry: './src/pages/importer/index.tsx',
+    entry: './src/pages/index/index.tsx',
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'extension.js',
@@ -25,10 +25,13 @@ module.exports = {
     devtool: 'source-map',
     resolve: {
         alias: {
+            // 项目根目录
+            dirname: './',
             "@": path.join(__dirname, "src"),
-            // pages: path.join(__dirname, "src/pages"),
-            // router: path.join(__dirname, "src/router")
-        }
+            '~': path.join(__dirname, "src"),
+            pages: path.join(__dirname, "src/pages"),
+        },
+        extensions: ['.js', '.jsx', '.tsx']
     },
     module: {
         rules: [{
@@ -41,13 +44,12 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [{
+                        loader: 'style-loader'
+                    }, {
                         loader: "css-loader", // 允许在js中import一个css文件，会将css文件当成一个模块引入到js文件中
                     },
                     {
                         loader: "sass-loader" // 将sass编译为css
-                    },
-                    {
-                        loader: "postcss-loader"
                     }
                 ]
             },

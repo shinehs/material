@@ -1,0 +1,26 @@
+@import '~antd/dist/antd.css';
+
+.importer-wrapper {
+    font-size: 18px;
+    color: red;
+}
+
+.importer-wrapper {
+    position: relative;
+    min-width: 400px;
+    margin: 10px 0 30px 30px;
+}
+
+.importer-wrapper__radioGroup {
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+.importer-wrapper__search{
+    margin-top: 12px;
+}
+#importer-wrapper__tabs {
+    .ant-tabs-nav-wrap {
+        display: none;
+    }
+}
