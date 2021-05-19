@@ -1,5 +1,9 @@
 @import '~antd/dist/antd.css';
 
+body{
+    position: relative;
+    overflow: hidden;
+}
 .importer-wrapper {
     font-size: 18px;
     color: red;
@@ -8,7 +12,7 @@
 .importer-wrapper {
     position: relative;
     min-width: 400px;
-    margin: 10px 0 30px 30px;
+    margin: 16px 30px;
 }
 
 .importer-wrapper__radioGroup {

@@ -50,7 +50,7 @@
     "scripts": {
         "start": "webpack-cli",
         "watch": "webpack serve",
-        "build": "",
+        "build": "webpack",
         "pro": "set NODE_ENV=production&&webpack",
         "macpro": "export NODE_ENV=production&&webpack",
         "dev": "set NODE_ENV=development&&webpack-dev-server",

@@ -57,7 +57,6 @@ export function getHtmlForWebview(
     </head>
     <body>
       <noscript>You need to enable JavaScript to run this app.</noscript>
-      <h1>counter</h1>
       <div id="app">0</div>
       ` +
     (needVendor ? `<script src="${vendorScriptUri}"></script>` : '') +

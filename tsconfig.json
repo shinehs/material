@@ -8,12 +8,6 @@
         "lib": [
             "es6"
         ],
-        "variable-name": [
-            false,
-            "ban-keywords",
-            "check-format",
-            "allow-leading-underscore"
-        ],
         "sourceMap": true,
         "strict": true /* enable all strict type-checking options */
         /* Additional Checks */

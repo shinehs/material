@@ -59,9 +59,9 @@ export const Importer: React.FC<Props> = (props) => {
         <p>Some contents...</p>
         <p>Some contents...</p>
       </Modal>
-      <Button type="primary" onClick={() => setActive(true)}>
+      {/* <Button type="primary" onClick={() => setActive(true)}>
         Primary
-      </Button>
+      </Button> */}
     </div>
   );
 };
