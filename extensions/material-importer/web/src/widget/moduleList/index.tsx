@@ -10,41 +10,57 @@ const data: Array<MaterialItemProps> = [
     txt: '12asdasdsada',
     url:
       'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_match%2F0%2F11878485106%2F0.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623935113&t=3420c6ef1e017600f980b777456fde1a',
+    previewUrl: 'https://',
+    sourceCode: '',
   },
   {
     txt: 'adasfdsafgsarfsa',
     url:
-      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_match%2F0%2F11878485106%2F0.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623935113&t=3420c6ef1e017600f980b777456fde1a',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp9.itc.cn%2Fq_70%2Fimages03%2F20200618%2F46a8c11bfe9e4d75859493227184f6b7.jpeg&refer=http%3A%2F%2Fp9.itc.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1624010374&t=9ee8170b54cedd07e6fd485b1058c175',
+    previewUrl: 'https://',
+    sourceCode: '',
   },
   {
     txt: 'asdsafhsiugaf',
     url:
-      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_match%2F0%2F11878485106%2F0.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623935113&t=3420c6ef1e017600f980b777456fde1a',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_match%2F0%2F12140636730%2F0.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1624010482&t=be6528c5ca151f0c6275e30e3cf29772',
+    previewUrl: 'https://',
+    sourceCode: '',
   },
   {
     txt: 'Racing car sprays burning fuel into crowd.1',
     url:
-      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_match%2F0%2F11878485106%2F0.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623935113&t=3420c6ef1e017600f980b777456fde1a',
+      'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=4032942342,429774400&fm=26&gp=0.jpg',
+    previewUrl: 'https://',
+    sourceCode: '',
   },
   {
     txt: '12asdasdsada',
     url:
       'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_match%2F0%2F11878485106%2F0.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623935113&t=3420c6ef1e017600f980b777456fde1a',
+    previewUrl: 'https://',
+    sourceCode: '',
   },
   {
     txt: 'adasfdsafgsarfsa',
     url:
       'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_match%2F0%2F11878485106%2F0.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623935113&t=3420c6ef1e017600f980b777456fde1a',
+    previewUrl: 'https://',
+    sourceCode: '',
   },
   {
     txt: 'asdsafhsiugaf',
     url:
       'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_match%2F0%2F11878485106%2F0.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623935113&t=3420c6ef1e017600f980b777456fde1a',
+    previewUrl: 'https://',
+    sourceCode: '',
   },
   {
     txt: 'Racing car sprays burning fuel into crowd.1',
     url:
       'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_match%2F0%2F11878485106%2F0.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623935113&t=3420c6ef1e017600f980b777456fde1a',
+    previewUrl: 'https://',
+    sourceCode: '',
   },
 ];
 interface Props {
@@ -90,7 +106,12 @@ export const ModuleList: React.FC<Props> = (props) => {
               onMouseOver={mouseOver.bind(this, index)}
               onMouseOut={mouseOut.bind(this, index)}
             >
-              <MaterialItem txt={item.txt} url={item.url}></MaterialItem>
+              <MaterialItem
+                txt={item.txt}
+                url={item.url}
+                previewUrl={item.previewUrl}
+                sourceCode={item.sourceCode}
+              ></MaterialItem>
             </List.Item>
           )}
         />

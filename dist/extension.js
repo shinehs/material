@@ -29,7 +29,10 @@ function activate(context) {
     const { subscriptions, extensionPath } = context;
     let disposable = vscode.commands.registerCommand('n.helloWorld', function () {
         vscode.window.showInformationMessage(`${name} is running version ${version} `);
-        const panel = vscode.window.createWebviewPanel('demo', 'demo', ViewColumn.One, {});
+        const panel = vscode.window.createWebviewPanel('demo', 'demo', ViewColumn.One, {
+        // enableScripts: true, // 启用JS，默认禁用
+        // retainContextWhenHidden: true, // webview被隐藏时保持状态，避免被重置
+        });
         panel.webview.html = getPreviewHtml();
     });
     // init statusBarItem TODO 不出来 暂时不知道为什么

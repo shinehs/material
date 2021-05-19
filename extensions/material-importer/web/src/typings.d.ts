@@ -4,3 +4,9 @@ declare module '*.scss' {
   export default classes;
 }
 declare module '*.svg';
+
+interface IVScode {
+    postMessage(message: any): void;
+}
+
+declare const vscode: IVScode;

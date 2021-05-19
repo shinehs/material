@@ -1,5 +1,12 @@
 import * as React from 'react';
 import { useState } from 'react';
+
+declare function acquireVsCodeApi(): any;
+let vscode: any = null;
+if (typeof acquireVsCodeApi !== 'undefined'){
+    vscode = acquireVsCodeApi();
+}
+
 import { Button, Radio, Tabs, Input, Space, Modal } from 'antd';
 import { SearchBar } from '~/widget/searchBar/index';
 import { ModuleList } from '~/widget/ModuleList/index';
@@ -12,11 +19,14 @@ interface Props {}
 export const Importer: React.FC<Props> = (props) => {
   const [type, setType] = useState('base');
   const [active, setActive] = useState(false);
+
   const tabChange = (e: any) => {
     setType(e.target.value);
   };
+
   const onSearch = (val: string) => {
-    debugger;
+    console.log(val);
+    // vscode.postMessage({ text: '你好，我是Webview啊！' });
   };
 
   return (

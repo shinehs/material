@@ -26,10 +26,7 @@ module.exports = {
     resolve: {
         alias: {
             // 项目根目录
-            dirname: './',
-            "@": path.join(__dirname, "src"),
-            '~': path.join(__dirname, "src"),
-            pages: path.join(__dirname, "src/pages"),
+            '~': path.join(__dirname, "src")
         },
         extensions: ['.js', '.jsx', '.tsx']
     },
