@@ -10,3 +10,5 @@ interface IVScode {
 }
 
 declare const vscode: IVScode;
+
+declare function acquireVsCodeApi(): any;

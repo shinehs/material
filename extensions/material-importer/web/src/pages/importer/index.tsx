@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
 
-declare function acquireVsCodeApi(): any;
-let vscode: any = null;
-if (typeof acquireVsCodeApi !== 'undefined'){
-    vscode = acquireVsCodeApi();
-}
-
 import { Button, Radio, Tabs, Input, Space, Modal } from 'antd';
 import { SearchBar } from '~/widget/searchBar/index';
 import { ModuleList } from '~/widget/ModuleList/index';
@@ -26,7 +20,13 @@ export const Importer: React.FC<Props> = (props) => {
 
   const onSearch = (val: string) => {
     console.log(val);
+    
+  };
+
+  const addModulet = (moduleInfo: any) => {
+    // 调用 vscode api
     // vscode.postMessage({ text: '你好，我是Webview啊！' });
+    console.log('TODO 添加操作vscode代码');
   };
 
   return (

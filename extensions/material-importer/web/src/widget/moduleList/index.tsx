@@ -5,6 +5,12 @@ import InfiniteScroll from 'react-infinite-scroller';
 import { MaterialItem, MaterialItemProps } from '../materialItem/materialItem';
 import './list.scss';
 
+// 引入vscode的方式
+let vscode: any = null;
+if (typeof acquireVsCodeApi !== 'undefined') {
+    vscode = acquireVsCodeApi();
+}
+
 const data: Array<MaterialItemProps> = [
   {
     txt: '12asdasdsada',
@@ -83,6 +89,11 @@ export const ModuleList: React.FC<Props> = (props) => {
     target[index] = false;
     setItemActive(target);
   };
+  const addModule = (moduleInfo: any) => {
+    // 调用 vscode api
+    // vscode.postMessage({ text: '你好，我是Webview啊！' });
+      console.log('TODO 添加操作vscode代码', moduleInfo);
+  };
 
   const handleInfiniteOnLoad = () => {};
   return (
@@ -105,6 +116,7 @@ export const ModuleList: React.FC<Props> = (props) => {
               className={itemActive[index] ? 'active' : ''}
               onMouseOver={mouseOver.bind(this, index)}
               onMouseOut={mouseOut.bind(this, index)}
+              onClick={addModule.bind(this,item)}
             >
               <MaterialItem
                 txt={item.txt}
